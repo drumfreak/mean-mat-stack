@@ -11,6 +11,7 @@ import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { PostsModule } from './posts/posts.module';
 import { PagesModule } from './pages/pages.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PagesModule } from './pages/pages.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     HttpClientModule,
     AngularMaterialModule,
     PostsModule,
