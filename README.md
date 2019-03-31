@@ -39,11 +39,11 @@ Next, modify /nodemon.json for any changes you may need such as :
 
 Additionally, if you're running your Angular frontend on a different host, you may want to modify your `/src/environments/environments.ts` or `environments.prod.ts` to update the apiURL and hostUrl.
 
-* Dev example:
+* Dev example (running on the same machine):
 
 ```
-apiUrl: 'http://someHost:4040/api',
-hostUrl: 'http://someHost:4040'
+apiUrl: '/api',
+hostUrl: ''
 ```
 
 * Production example:
