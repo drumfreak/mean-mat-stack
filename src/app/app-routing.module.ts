@@ -4,9 +4,11 @@ import { PostListComponent } from './posts/post-list/post-list.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { AuthGuard } from './auth/auth.guard';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { WeatherComponent } from './weather/weather.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
+  { path: 'weather', component: WeatherComponent },
   { path: 'posts', component: PostListComponent },
   { path: 'posts/create', component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: 'posts/edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard] },

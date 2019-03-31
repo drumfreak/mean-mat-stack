@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private breakpointObserver: BreakpointObserver) {}
 
-
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)

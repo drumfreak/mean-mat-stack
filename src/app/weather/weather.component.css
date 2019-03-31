@@ -1,0 +1,13 @@
+.loading {
+  margin:auto;
+  width:300px;
+  text-align:center;
+}
+
+.text-center {
+  text-align:center;
+}
+
+mat-spinner {
+  margin:auto;
+}

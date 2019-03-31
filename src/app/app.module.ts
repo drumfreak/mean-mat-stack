@@ -12,6 +12,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { PostsModule } from './posts/posts.module';
 import { PagesModule } from './pages/pages.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { WeatherModule } from './weather/weather.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpClientModule,
     AngularMaterialModule,
     PostsModule,
-    PagesModule
+    PagesModule,
+    WeatherModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
               {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
