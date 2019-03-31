@@ -1,0 +1,6 @@
+{
+  "env" : {
+    "JWT_KEY" : "ASDF@AWERLK@LK@#LK!_@#ASDFL@K@#FLASDL@!!!!!!L:AASFKFF",
+    "MONGO_CONNECT_URL" : "mongodb://localhost:27017/meandemo"
+  }
+}

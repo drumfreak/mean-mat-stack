@@ -22,18 +22,47 @@ MEAN is a set of Open Source components that together, provide an end-to-end fra
 ``` 
 git clone https://github.com/drumfreak/mean-mat-stack
 cd mean-mat-stack
-Modify nodemon.json for any changes you may need such as MongoDB Connection
 npm install
-npm start (for development)
+cp nodemon.example.json nodemon.json
 ```
-Access via `http://localhost:4040`
+
+Next, modify /nodemon.json for any changes you may need such as :
+
+```
+{
+  "env" : {
+    "JWT_KEY" : "ASDF@AWERLK@LK@#LK!_@#ASDFL@K@#FLASDL@!!!!!!L:AASFKFF",
+    "MONGO_CONNECT_URL" : "mongodb://localhost:27017/meandemo"
+  }
+}
+```
+
+Additionally, if you're running your Angular frontend on a different host, you may want to modify your `/src/environments/environments.ts` or `environments.prod.ts` to update the apiURL and hostUrl.
+
+* Dev example:
+
+```
+apiUrl: 'http://someHost:4040/api',
+hostUrl: 'http://someHost:4040'
+```
+
+* Production example:
+
+```
+apiUrl: 'http://someHost.com/api',
+hostUrl: 'http://someHost.com'
+```
+
+* Now for development, simply run: 
+
+```
+npm start
+```
+
+Access your development host via `http://localhost:4040`
 
 
 # Optional / Additional Info
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
