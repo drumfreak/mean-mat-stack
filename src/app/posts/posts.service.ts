@@ -54,13 +54,14 @@ export class PostService {
   }
 
   getPost(id: string) {
+    console.log(id);
     return this.http.get<{
       _id: string,
       title: string,
       content: string,
       imagePath: string,
       user: string,
-     }>(API_URL + id
+     }>(API_URL + '/' + id
     );
   }
 
@@ -73,7 +74,7 @@ export class PostService {
     this.http
       .post<{message: string, postId: string, post: any}>(API_URL, postData)
       .subscribe(responseData => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/posts']);
       });
   }
 
@@ -96,7 +97,7 @@ export class PostService {
 
     this.http.put(API_URL + '/update/' + id, postData)
       .subscribe(response => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/posts']);
     });
   }
 
