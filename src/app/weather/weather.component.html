@@ -1,4 +1,4 @@
-<div class="loading" *ngIf="loading">
+<div class="loading mt-5" *ngIf="loading">
     <div class="text-center">
         <mat-spinner class="text-center"></mat-spinner>
         <p>&nbsp;</p>
@@ -6,9 +6,9 @@
     </div>
 </div> <!-- end loader -->
 
-<div class="jumbotron p-0 mb-0" *ngIf="weather && weather.length > 0 && !loading">
+<div class="p-0 mb-5 mt-5" *ngIf="weather && weather.length > 0 && !loading">
     <div class="row">
-        <div class="col-sm-12 text-center">
+        <div class="col-sm-12 text-center mt-6">
             <form class="form-inline justify-content-center" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                 <div class="form-group mt-6">
                     <input class="form-control mt-6" type="text"
@@ -20,21 +20,44 @@
         </div>
     </div> <!-- end form -->
 
-    <div class="mainContainer p-0 pt-4 pb-4 mb-0">
+     <!-- <mat-grid-list cols="6" rowHeight="325px">
+            <mat-grid-tile *ngFor="let w of weather">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                      <mat-card-title>
+                        <h4>{{w.applicable_date | date:'EE'}} {{w.applicable_date | date:'MM/dd'}}</h4>
+                      </mat-card-title>
+                      <mat-card-subtitle>{{w.weather_state_name}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <i  style="font-size: 70px;margin-bottom:16px;" class="{{iconMap[w.weather_state_abbr]}} text-primary"></i>
+                    <mat-card-content>
+                        <h4 class="card-title">{{(w.min_temp * 9.0 / 5.0 + 32) | number : '1.0-0'}}
+                            / {{(w.max_temp * 9.0 / 5.0 + 32) | number : '1.0-0'}} &#8457;</h4>
+                        <p class="card-text"><br/>
+                            Humidity: {{w.humidity | number:'1.0-0'}}%<br/>
+                            Pressure: {{w.air_pressure | number:'1.0-2'}} mb<br/>
+                            Wind: {{w.wind_speed | number:'1.0-0'}} {{w.wind_direction_compass}}</p>
+                    </mat-card-content>
+                  </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list> -->
+
+    <div class="mainContainer p-0 pt-4 pb-4 mb-0 mt-2">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h2>Weather for <i>{{wLocation}}</i></h2>
             </div>
         </div>
+        
         <div class="container p-0">
             <div class="row text-center">
                 <div class="col-md-2 col-sm-2 border border-light border-3 p-0 mb-2" *ngFor="let w of weather">
-                    <div class="bg-primary p-2 text-light col-md-12">
+                    <div class="bg-color p-2 text-light col-md-12">
                         <h4>{{w.applicable_date | date:'EE'}} {{w.applicable_date | date:'MM/dd'}}</h4>
                     </div>
                     <div class="bg-light pb-5">
-                        <i  style="font-size: 70px;margin-bottom:16px;"
-                           class="{{iconMap[w.weather_state_abbr]}} text-primary"></i><br/>
+                        <i  style="font-size: 70px;margin-bottom:16px"
+                           class="{{iconMap[w.weather_state_abbr]}} text-primary icon-color"></i><br/>
                         <h4 class="card-title">{{(w.min_temp * 9.0 / 5.0 + 32) | number : '1.0-0'}}
                             / {{(w.max_temp * 9.0 / 5.0 + 32) | number : '1.0-0'}} &#8457;</h4>
                         <p class="card-text">{{w.weather_state_name}}<br/>
@@ -48,7 +71,7 @@
     </div>
 </div>
 
-<div class="jumbotron p-2 mb-0">
+<div class="p-2 mb-0">
     <div class="container p-0">
         <div class="row col-md-12">
             <div class="col-md-1"></div>
@@ -78,13 +101,14 @@
     </div>
 </div>
 
+
 <div class="mainContainer" *ngIf="!weather || weather.length === 0 && !loading">
-    <div class="jumbotron p-2 mb-0">
+    <div class="p-2 mb-0">
         <p>No weather data for that location.</p>
     </div>
 </div>
 
-<div *ngIf="!loading" class="jumbotron p-8 mb-0">
+<div *ngIf="!loading" class="p-8 mb-0 mt-5">
     <div class="container">
     <div class="row">
         <div class="col-md-10">

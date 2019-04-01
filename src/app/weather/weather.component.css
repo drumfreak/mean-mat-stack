@@ -11,3 +11,11 @@
 mat-spinner {
   margin:auto;
 }
+
+.bg-color {
+  background-color: #6f42c1 !important
+}
+
+.icon-color {
+  color: #6f42c1 !important
+}

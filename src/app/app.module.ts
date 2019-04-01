@@ -8,10 +8,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error.interceptor';
 import { ErrorComponent } from './error/error.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularMaterialModule } from './angular-material.module';
 import { PostsModule } from './posts/posts.module';
 import { PagesModule } from './pages/pages.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { WeatherModule } from './weather/weather.module';
 
 @NgModule({
@@ -29,7 +30,8 @@ import { WeatherModule } from './weather/weather.module';
     AngularMaterialModule,
     PostsModule,
     PagesModule,
-    WeatherModule
+    WeatherModule,
+    NgbModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
               {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
