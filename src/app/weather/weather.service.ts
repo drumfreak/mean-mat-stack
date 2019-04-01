@@ -16,7 +16,7 @@ const httpOptions = {
 export class WeatherService {
   constructor(private http: HttpClient) {}
 
-  getWeather (location): Observable<Weather[]> {
+  getWeather(location: string): Observable<Weather[]> {
     return this.http.get<Weather[]>('/api/weather/' + location);
   }
 
@@ -26,10 +26,10 @@ export class WeatherService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      return of(result as T);
-    };
-  }
+  // private handleError<T>(operation = 'operation', result?: T) {
+  //   return (error: any): Observable<T> => {
+  //     return of(result as T);
+  //   };
+  // }
 
 }
