@@ -6,6 +6,7 @@ import { PostDetailsComponent } from './posts/post-details/post-details.componen
 import { AuthGuard } from './auth/auth.guard';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { WeatherComponent } from './weather/weather.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -14,7 +15,10 @@ const routes: Routes = [
   { path: 'posts/create', component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: 'posts/edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: 'posts/:postId', component: PostDetailsComponent },
-  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
+  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
+
+  { path: '**', component: PageNotFoundComponent }
+
 ];
 
 @NgModule({
