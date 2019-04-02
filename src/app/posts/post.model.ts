@@ -4,4 +4,5 @@ export interface Post {
   content: string;
   imagePath: string;
   user: string;
+  createdAt: string;
 }

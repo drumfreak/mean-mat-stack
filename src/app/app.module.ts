@@ -14,6 +14,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { PostsModule } from './posts/posts.module';
 import { PagesModule } from './pages/pages.module';
 import { WeatherModule } from './weather/weather.module';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { WeatherModule } from './weather/weather.module';
     PostsModule,
     PagesModule,
     WeatherModule,
-    NgbModule
+    NgbModule,
+    MomentModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
               {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],

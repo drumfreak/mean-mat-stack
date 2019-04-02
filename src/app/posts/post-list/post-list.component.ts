@@ -10,7 +10,6 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css']
 })
-
 export class PostListComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   isLoading = false;
@@ -23,14 +22,18 @@ export class PostListComponent implements OnInit, OnDestroy {
   private postsSub: Subscription;
   private authStatusSubs: Subscription;
 
-  constructor(public postsService: PostService, private authService: AuthService) {}
+  constructor(
+    public postsService: PostService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.isLoading = true;
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
     this.userId = this.authService.getUserId();
-    this.postsSub = this.postsService.getPostUpdateListener()
-      .subscribe((postData: { posts: Post[], postCount: number }) => {
+    this.postsSub = this.postsService
+      .getPostUpdateListener()
+      .subscribe((postData: { posts: Post[]; postCount: number }) => {
         this.isLoading = false;
         this.posts = postData.posts;
         this.totalPosts = postData.postCount;
@@ -47,11 +50,14 @@ export class PostListComponent implements OnInit, OnDestroy {
 
   onDelete(postId: string) {
     this.isLoading = true;
-    this.postsService.deletePost(postId).subscribe(() => {
-      this.postsService.getPosts(this.postsPerPage, this.currentPage);
-    }, () => {
-      this.isLoading = false;
-    });
+    this.postsService.deletePost(postId).subscribe(
+      () => {
+        this.postsService.getPosts(this.postsPerPage, this.currentPage);
+      },
+      () => {
+        this.isLoading = false;
+      }
+    );
   }
 
   onChangePage(pageData: PageEvent) {
@@ -59,7 +65,6 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.currentPage = pageData.pageIndex + 1;
     this.postsPerPage = pageData.pageSize;
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
-
   }
 
   ngOnDestroy() {

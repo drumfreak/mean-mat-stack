@@ -1,5 +1,5 @@
 <mat-spinner *ngIf="isLoading === true"></mat-spinner>
-<mat-accordion multi="true" *ngIf="posts.length > 0 && isLoading === false">
+<!-- <mat-accordion multi="true" *ngIf="posts.length > 0 && isLoading === false">
   <mat-expansion-panel *ngFor="let post of posts" [expanded]="true">
     <mat-expansion-panel-header>
       {{post.title}}
@@ -13,12 +13,56 @@
       <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
     </mat-action-row>
   </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> -->
+
+<div *ngIf="posts.length > 0 && isLoading === false">
+  <div class="mb-3" *ngFor="let post of posts">
+    <mat-card class="post-card">
+      <mat-card-header class="mb-3">
+        <div mat-card-avatar>
+          <img class="avatar_img" src="/assets/img/avatar_male.png" />
+        </div>
+        <mat-card-title> {{ post.title }} </mat-card-title>
+        <mat-card-subtitle>{{ post.createdAt | amTimeAgo }}</mat-card-subtitle>
+      </mat-card-header>
+      <a [routerLink]="['/posts', post.id]">
+        <img
+          mat-card-image
+          [src]="post.imagePath"
+          [alt]="post.title"
+          [title]="post.title"
+        />
+      </a>
+      <mat-card-content>
+        <p>
+          {{ post.content }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <mat-action-row *ngIf="userIsAuthenticated && post.user === userId">
+          <button
+            mat-button
+            color="primary"
+            [routerLink]="['/posts', 'edit', post.id]"
+          >
+            EDIT
+          </button>
+          <button mat-button color="warn" (click)="onDelete(post.id)">
+            DELETE
+          </button>
+        </mat-action-row>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
   <mat-paginator
     [length]="totalPosts"
     [pageSize]="postsPerPage"
     [pageSizeOptions]="pageSizeOptions"
     (page)="onChangePage($event)"
-    *ngIf="posts.length > 0">
+    *ngIf="posts.length > 0"
+  >
   </mat-paginator>
+</div>
+
 <p class="info-text mat-body-1" *ngIf="posts.length <= 0">No Posts yet</p>

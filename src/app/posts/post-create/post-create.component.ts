@@ -12,24 +12,25 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.css']
 })
-
 export class PostCreateComponent implements OnInit, OnDestroy {
   post: Post;
   isLoading = false;
   imagePreview: any;
   form: FormGroup;
-  private mode = 'create';
+  mode = 'create';
   private postId: string;
   private authStatusSub: Subscription;
 
   constructor(
-      public postService: PostService,
-      public route: ActivatedRoute,
-      private authService: AuthService) {}
+    public postService: PostService,
+    public route: ActivatedRoute,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     // Reactive form
-    this.authStatusSub = this.authService.getAuthStatusListener()
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
       .subscribe(authStatus => {
         this.isLoading = false;
       });
@@ -47,7 +48,6 @@ export class PostCreateComponent implements OnInit, OnDestroy {
       })
     });
 
-
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('postId')) {
         this.mode = 'edit';
@@ -60,7 +60,8 @@ export class PostCreateComponent implements OnInit, OnDestroy {
             title: postData.title,
             content: postData.content,
             imagePath: postData.imagePath,
-            user: null
+            user: null,
+            createdAt: postData.createdAt
           };
           this.form.setValue({
             title: this.post.title,
@@ -84,7 +85,6 @@ export class PostCreateComponent implements OnInit, OnDestroy {
       this.imagePreview = reader.result;
     };
     reader.readAsDataURL(file);
-
   }
 
   onAddPost() {
@@ -104,7 +104,8 @@ export class PostCreateComponent implements OnInit, OnDestroy {
         this.postId,
         this.form.value.title,
         this.form.value.content,
-        this.form.value.image
+        this.form.value.image,
+        null
       );
     }
   }

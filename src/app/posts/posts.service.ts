@@ -54,13 +54,13 @@ export class PostService {
   }
 
   getPost(id: string) {
-    console.log(id);
     return this.http.get<{
       _id: string,
       title: string,
       content: string,
       imagePath: string,
       user: string,
+      createdAt: any,
      }>(API_URL + '/' + id
     );
   }
@@ -78,7 +78,7 @@ export class PostService {
       });
   }
 
-  updatePost(id: string, postTitle: string, postContent: string, image: any) {
+  updatePost(id: string, postTitle: string, postContent: string, image: any, createdAt: any) {
     let postData: Post | FormData;
     if (typeof(image) === 'object') {
      postData = new FormData();
@@ -91,6 +91,7 @@ export class PostService {
         title: postTitle,
         content: postContent,
         imagePath: image,
+        createdAt,
         user: null
      };
    }
