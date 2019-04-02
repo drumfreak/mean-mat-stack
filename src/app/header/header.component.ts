@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
 
 export class HeaderComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
+  userId: string;
   private authListenerSubs: Subscription;
 
   constructor(private authService: AuthService, private breakpointObserver: BreakpointObserver) {}

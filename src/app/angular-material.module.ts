@@ -11,7 +11,8 @@ import { MatInputModule,
   MatTabsModule,
   MatIconModule,
   MatSidenavModule,
-  MatListModule} from '@angular/material';
+  MatListModule,
+  MatMenuModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Hammer } from 'hammerjs';
@@ -31,6 +32,7 @@ import { Hammer } from 'hammerjs';
     MatTabsModule,
     MatIconModule,
     MatSidenavModule,
+    MatMenuModule,
     FlexLayoutModule
   ],
   exports: [
@@ -47,6 +49,7 @@ import { Hammer } from 'hammerjs';
     MatTabsModule,
     MatIconModule,
     MatSidenavModule,
+    MatMenuModule,
     FlexLayoutModule
   ]
 })
