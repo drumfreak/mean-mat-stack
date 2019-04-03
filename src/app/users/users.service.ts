@@ -29,6 +29,7 @@ export class UserService {
         about: string;
         sex: string;
         createdAt: any;
+        profileCreated: boolean;
       },
       imagePath: string;
     }>(API_URL + '/' + id);
@@ -41,7 +42,8 @@ export class UserService {
     about: string,
     image: any,
     sex: any,
-    createdAt: any
+    createdAt: any,
+    profileCreated: boolean
   ) {
     let postData: UserProfile | FormData;
     if (typeof image === 'object') {
@@ -59,7 +61,8 @@ export class UserService {
         about,
         imagePath: image,
         createdAt,
-        sex
+        sex,
+        profileCreated
       };
     }
 

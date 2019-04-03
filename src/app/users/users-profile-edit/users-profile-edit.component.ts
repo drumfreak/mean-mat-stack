@@ -68,7 +68,8 @@ export class UsersProfileEditComponent implements OnInit {
           about: profileData.profile.about,
           imagePath: profileData.imagePath,
           sex: profileData.profile.sex,
-          createdAt: profileData.profile.createdAt
+          createdAt: profileData.profile.createdAt,
+          profileCreated: profileData.profile.profileCreated
         };
         this.form.setValue({
           firstName: this.userProfile.firstName || null,
@@ -107,7 +108,8 @@ export class UsersProfileEditComponent implements OnInit {
       this.form.value.about,
       this.form.value.image,
       this.form.value.sex,
-      null
+      null,
+      true
     );
   }
 }

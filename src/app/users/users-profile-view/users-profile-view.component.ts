@@ -38,14 +38,10 @@ export class UsersProfileViewComponent implements OnInit {
       });
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('userId')) {
+      if (paramMap.has('profileId')) {
         this.isLoading = true;
-        this.profileId = paramMap.get('userId');
-        console.log('Profile ID', this.profileId);
-        console.log('User ID', this.userId);
-
-        this.userService.getProfile(this.userId).subscribe(profileData => {
-          this.isLoading = false;
+        this.profileId = paramMap.get('profileId');
+        this.userService.getProfile(this.profileId).subscribe(profileData => {
           this.userProfile = {
             id: profileData.profile._id,
             firstName: profileData.profile.firstName,
@@ -53,9 +49,11 @@ export class UsersProfileViewComponent implements OnInit {
             about: profileData.profile.about,
             imagePath: profileData.imagePath,
             sex: profileData.profile.sex,
-            createdAt: profileData.profile.createdAt
+            createdAt: profileData.profile.createdAt,
+            profileCreated: profileData.profile.profileCreated
           };
           this.imagePreview =  profileData.imagePath;
+          this.isLoading = false;
         });
       }
     });

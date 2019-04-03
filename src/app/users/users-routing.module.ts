@@ -7,7 +7,7 @@ import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   { path: 'edit', component: UsersProfileEditComponent, canActivate: [AuthGuard]  },
-  { path: ':userId', component: UsersProfileViewComponent  }
+  { path: ':profileId', component: UsersProfileViewComponent  }
 ];
 
 @NgModule({

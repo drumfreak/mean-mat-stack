@@ -6,4 +6,5 @@ export interface UserProfile {
   sex: string;
   createdAt: string;
   imagePath: string;
+  profileCreated: boolean;
 }

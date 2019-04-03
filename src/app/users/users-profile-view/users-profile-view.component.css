@@ -29,3 +29,6 @@ mat-card-actions {
   height: 50px;
   width: 50px;
 }
+.text-center {
+  text-align: center;
+}
