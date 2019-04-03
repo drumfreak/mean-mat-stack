@@ -34,7 +34,7 @@ import { MomentModule } from 'ngx-moment';
     WeatherModule,
     NgbModule,
     MomentModule
-  ],
+    ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
               {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
   bootstrap: [AppComponent],

@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { UserService } from '../users/users.service';
 
 @Component({
   selector: 'app-header',
@@ -14,9 +15,14 @@ import { map } from 'rxjs/operators';
 export class HeaderComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
   userId: string;
+  userProfile: any;
   private authListenerSubs: Subscription;
 
-  constructor(private authService: AuthService, private breakpointObserver: BreakpointObserver) {}
+  constructor(
+      private authService: AuthService,
+      private breakpointObserver: BreakpointObserver,
+      public userService: UserService
+    ) {}
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -25,12 +31,28 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userIsAuthenticated = this.authService.getAuthStatus();
-
+    this.userId = this.authService.getUserId();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
       });
+
+    if (this.userIsAuthenticated) {
+      if (this.userId) {
+        this.userService.getProfile(this.userId).subscribe(profileData => {
+          this.userProfile = {
+            id: profileData.profile._id,
+            firstName: profileData.profile.firstName,
+            lastName: profileData.profile.lastName,
+            about: profileData.profile.about,
+            imagePath: profileData.imagePath,
+            sex: profileData.profile.sex,
+            createdAt: profileData.profile.createdAt
+          };
+        });
+      }
+    }
   }
 
   onLogout() {

@@ -1,7 +1,7 @@
 const multer = require('multer');
 const path = require('path');
 const mkdirp = require('mkdirp');
-const uploadPath = 'images/posts';
+const uploadPath = 'images/profiles';
 const UPLOAD_PATH = path.resolve(__dirname, '../', uploadPath);
 
 const MIME_TYPE_MAP = {

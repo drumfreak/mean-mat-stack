@@ -16,9 +16,8 @@ const routes: Routes = [
   { path: 'posts/edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: 'posts/:postId', component: PostDetailsComponent },
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
-
+  { path: 'user', loadChildren: './users/users.module#UsersModule' },
   { path: '**', component: PageNotFoundComponent }
-
 ];
 
 @NgModule({

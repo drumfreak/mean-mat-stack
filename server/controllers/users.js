@@ -68,3 +68,51 @@ exports.login = (req, res, next) => {
       });
   });
 };
+
+exports.getUserProfile = (req, res, next) => {
+  User.findById(req.params.id)
+    .then(profile => {
+      if (profile) {
+        res.status(200).json({profile: profile.profile, imagePath: profile.imagePath });
+      } else {
+        res.status(404).json({ message: "User Profile not found" });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ message: error.message });
+    });
+};
+
+exports.updateProfile = (req, res, next) => {
+  let imagePath = req.body.imagePath;
+  if (req.file) {
+    imagePath = "/images/profiles/" + req.file.filename;
+  }
+  if(!req.userData.userId) {
+    return res.status(401).json({ message: "Not Authorized" });
+  }
+
+  const profile = {
+    profile: {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      sex: req.body.sex,
+      about: req.body.about,
+      created: Date.now(),
+      profileCreated: true
+    },
+    imagePath: imagePath
+  }
+
+  User.updateOne({ _id: req.userData.userId }, profile)
+    .then(result => {
+      if (result.n > 0) {
+        res.status(200).json({ message: "Update Successful", profile: {imagePath: result.imagePath, profile: result.profile} });
+      } else {
+        res.status(401).json({ message: "Not Authorized" });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: err.message });
+    });
+};

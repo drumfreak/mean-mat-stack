@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 const uniqueValidator = require('mongoose-unique-validator');
 
 const userSchema = mongoose.Schema ({
@@ -18,6 +17,24 @@ const userSchema = mongoose.Schema ({
   },
   imagePath: {
     type: String
+  },
+  profile: {
+    firstName: String,
+    lastName: String,
+    about: String,
+    sex: String,
+    createdAt: {
+      type: Date,
+      default: Date.now
+    },
+    profileCreated: {
+      type: Boolean,
+      default: false
+    },
+    profileComplete: {
+      type: Boolean,
+      default: false
+    }
   }
 });
 

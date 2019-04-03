@@ -3,7 +3,7 @@
     <mat-card class="post-card">
       <mat-card-header>
         <div mat-card-avatar>
-          <img class="avatar_img" src="/assets/img/avatar_male.png" />
+          <a href="" [routerLink]="['/user', post.user]"><img class="avatar_img" src="/assets/img/avatar_male.png" /></a>
         </div>
         <mat-card-title> {{ post.title }} </mat-card-title>
         <mat-card-subtitle>{{ post.createdAt | amTimeAgo }}</mat-card-subtitle>

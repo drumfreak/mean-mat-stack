@@ -11,10 +11,10 @@
         <a *ngIf="userIsAuthenticated" mat-button routerLink="/posts/create" routerLinkActive="mat-accent">Create</a>
         <a *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
         <a *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a>
-        <a *ngIf="userIsAuthenticated" [matMenuTriggerFor]="menu"><img class="avatar_img" src="/assets/img/avatar_male.png" /></a>
+        <a *ngIf="userIsAuthenticated" [matMenuTriggerFor]="menu"><img class="avatar_img" src="{{userProfile.imagePath || '/assets/img/avatar_male.png'}}" /></a>
         <mat-menu #menu="matMenu">
             <button *ngIf="userIsAuthenticated" mat-menu-item [routerLink]="['user', userId]">View Profile</button>
-            <button *ngIf="userIsAuthenticated" mat-menu-item routerLink="/useredit">Edit Profile</button>
+            <button *ngIf="userIsAuthenticated" mat-menu-item [routerLink]="['user', 'edit']">Edit Profile</button>
             <button *ngIf="userIsAuthenticated" mat-menu-item (click)="onLogout()">Logout</button>
         </mat-menu>
 
@@ -34,6 +34,8 @@
         <a (click)="sidenav.toggle()" *ngIf="userIsAuthenticated" mat-list-item routerLink="/posts/create" routerLinkActive="mat-accent">Create</a>
         <a (click)="sidenav.toggle()" *ngIf="!userIsAuthenticated"  mat-list-item routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
         <a (click)="sidenav.toggle()" *ngIf="!userIsAuthenticated" mat-list-item routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a>
+        <a (click)="sidenav.toggle()" *ngIf="userIsAuthenticated" mat-list-item [routerLink]="['user', userId]" routerLinkActive="mat-accent">View Profile</a>
+        <a (click)="sidenav.toggle()" *ngIf="userIsAuthenticated" mat-list-item [routerLink]="['user', 'edit']" routerLinkActive="mat-accent">Edit Profile</a>
         <button (click)="sidenav.toggle()" *ngIf="userIsAuthenticated" mat-button (click)="onLogout()">Logout</button>
       </mat-nav-list>
     </mat-sidenav>

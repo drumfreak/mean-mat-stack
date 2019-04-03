@@ -7,7 +7,7 @@
 
 # upload images
 server/images/posts
-
+server/images/profiles
 # nodemon
 nodemon.json
 
