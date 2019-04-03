@@ -10,7 +10,7 @@
         placeholder="E-mail Address"
         #emailInput="ngModel"
         required
-        email>
+        email autocomplete="email">
       <mat-error *ngIf="emailInput.invalid">Please enter a valid E-Mail.</mat-error>
     </mat-form-field>
     <mat-form-field>
@@ -22,7 +22,7 @@
           placeholder="Password"
           #passwordInput
           required
-          password>
+          password autocomplete="current-password">
         <mat-error *ngIf="passwordInput.invalid">Please enter a valid Password.</mat-error>
       </mat-form-field>
       <button *ngIf="!isLoading" mat-raised-button color="accent" type="submit">Login</button>
