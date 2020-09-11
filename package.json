@@ -44,7 +44,7 @@
     "ms": "^2.1.1",
     "multer": "^1.4.1",
     "ngx-moment": "^3.4.0",
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^2.6.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "weather-icons": "github:erikflowers/weather-icons",
